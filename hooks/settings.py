@@ -164,7 +164,7 @@ class Settings(HookBaseClass):
                 write_node["mov64_quality_max"].setValue("3")
             else:
                 write_node["codec"].setValue("jpeg")
-            write_node["fps"].setValue(25)
+            write_node["fps"].setValue(25) # CHANGED TO 25FPS IN THE PREVIOUS COMMIT
 
             # note: in older versions of nuke, this settings string represents all the quicktime
             # code settings used on windows and mac.
