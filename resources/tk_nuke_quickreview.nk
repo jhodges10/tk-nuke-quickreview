@@ -5,14 +5,16 @@ Group {
  name ShotgunQuickReview
  note_font Verdana
  selected true
- xpos -338
- ypos -49
+ xpos -741
+ ypos 97
  mapsize {0.15 0.15}
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T "Click to create a Version and upload it to Shotgun."}
  addUserKnob {26 ""}
+ addUserKnob {26 SIMTHEORY l "" +STARTLINE T "SIM THEORY\n\nIn: Gamma 2.2\n"}
  addUserKnob {41 in_colorspace l in T mov_writer.in_colorspace}
+ addUserKnob {26 _1 l "" +STARTLINE T "\nOut: Linear\n"}
  addUserKnob {41 out_colorspace l out T mov_writer.out_colorspace}
  addUserKnob {26 ""}
  addUserKnob {22 UploadButton l Upload T "# have to gracefully support the case when \n# Sgtk is not in the system at all or when \n# running an incompatible version of Sgtk.\nimport nuke\ntry:\n  app = nuke.tk_nuke_quickreview\n  fn = app.create_review\nexcept Exception, e:\n  nuke.warning(\"Could not render Shotgun Quickreview! Most likely Toolkit is not currently active. Message: %s\" % e)\nelse:\n  fn(nuke.thisNode())\n\n" +STARTLINE}
