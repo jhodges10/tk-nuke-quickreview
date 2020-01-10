@@ -196,7 +196,7 @@ class Dialog(QtGui.QWidget):
         :param str sg_version_name: Name of the version.
         """
         # set the fonts for all text fields
-        font = os.path.join(self._bundle.disk_location, "resources", "OpenSans-Regular.ttf")
+        font = os.path.join(self._bundle.disk_location, "resources", "Avenir-Light.ttf")
         font = font.replace(os.sep, "/")
         self._group_node.node("top_left_text")["font"].setValue(font)
         self._group_node.node("top_right_text")["font"].setValue(font)
