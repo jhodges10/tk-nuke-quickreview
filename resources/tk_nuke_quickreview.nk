@@ -7,27 +7,37 @@ Group {
  lock_connections {{curve 0}}
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
- addUserKnob {26 CreateText l "" +STARTLINE T "Click to create a Version and upload it to Shotgun."}
- addUserKnob {26 ""}
- addUserKnob {26 text l "" +STARTLINE T "Set colorspace to show default:\n\n\nSIM Theory: Alexa LUT\n\n"}
- addUserKnob {26 _1 l "" +STARTLINE T "\n*<i>If default does not exist set colorspace to <b>linear</b>.</i>\n\n"}
- addUserKnob {26 _2 l "" +STARTLINE}
+ addUserKnob {26 CreateText l "" +STARTLINE T ""}
+ addUserKnob {26 text l "" +STARTLINE T "Set colorspace to show default:\n"}
+ addUserKnob {26 _1 l "" +STARTLINE T "*<i>If default does not exist set colorspace to <b>linear</b>.</i>\n\n\n"}
+ addUserKnob {26 "" +STARTLINE}
  addUserKnob {41 colorspace T mov_writer.colorspace}
  addUserKnob {26 ""}
+ addUserKnob {26 _3 l "" +STARTLINE T "Set format to show default:\n"}
+ addUserKnob {41 format l "output format" T Reformat1.format}
+ addUserKnob {26 ""}
+ addUserKnob {26 _4 l "" +STARTLINE T "Click to create a Version and upload it to Shotgun. \nRejoice, the process is finished!\n"}
  addUserKnob {22 UploadButton l Upload T "# have to gracefully support the case when \n# Sgtk is not in the system at all or when \n# running an incompatible version of Sgtk.\nimport nuke\ntry:\n  app = nuke.tk_nuke_quickreview\n  fn = app.create_review\nexcept Exception, e:\n  nuke.warning(\"Could not render Shotgun Quickreview! Most likely Toolkit is not currently active. Message: %s\" % e)\nelse:\n  fn(nuke.thisNode())\n\n" +STARTLINE}
 }
  Input {
   inputs 0
   name Input1
   xpos -411
-  ypos -84
+  ypos -232
+ }
+ Reformat {
+  format "4096 1716 0 0 4096 1716 1 muse 4k"
+  name Reformat1
+  selected true
+  xpos -411
+  ypos -175
  }
  Text {
   message ""
   size 48
   yjustify top
   Transform 1
-  box {{40 40} {"\[value root.height]-40" 1516} 1000 1310}
+  box {{40 40} {"\[value bbox.h]-40" 1516} 1000 1310}
   name top_left_text
   xpos -411
   ypos -44
@@ -38,7 +48,7 @@ Group {
   xjustify right
   yjustify bottom
   Transform 1
-  box {{"\[value root.width]-40" 2008} {40 40} 1208 240}
+  box {{"\[value bbox.w]-40" 2008} {40 40} 1208 240}
   name framecounter
   xpos -411
   ypos -20
@@ -49,7 +59,7 @@ Group {
   xjustify right
   yjustify top
   Transform 1
-  box {{"\[value root.width]-40" 2008} {"\[value root.height]-40" 1516} 1050 1280}
+  box {{"\[value bbox.w]-40" 2008} {"\[value bbox.h]-40" 1516} 1050 1280}
   name top_right_text
   xpos -411
   ypos 6
@@ -76,7 +86,7 @@ Group {
   leading 0.3
   yjustify center
   Transform 1
-  box {300 {"(\[value root.height]/2)-500"} 1800 1389}
+  box {300 {"(\[value bbox.h]/2)-500"} 1800 1389}
   name slate_info
   xpos -556
   ypos 39
