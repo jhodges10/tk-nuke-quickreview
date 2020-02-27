@@ -139,11 +139,11 @@ class Settings(HookBaseClass):
         :param write_node: The nuke write node used to generate the quicktime that is being uploaded.
         """
         write_node["file_type"].setValue("mov")
-        write_node["mov64_codec"].setValue("ap4h")
+        write_node["mov64_codec"].setValue("apcn")
         write_node["mov64_bitrate"].setValue(4000)
-        write_node["mov64_bitrate_tolerance"].setValue(8000)
-        write_node['mov64_quality_min'].setValue(5)
-        write_node["mov64_quality_max"].setValue(15)
+        write_node["mov64_bitrate_tolerance"].setValue(40000000)
+        write_node['mov64_quality_min'].setValue(2)
+        write_node["mov64_quality_max"].setValue(31)
         write_node["mov64_gop_size"].setValue(12)
         write_node["mov64_b_frames"].setValue(0)
 
