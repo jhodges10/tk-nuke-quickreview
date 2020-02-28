@@ -8,13 +8,8 @@ Group {
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T ""}
- addUserKnob {26 text l "" +STARTLINE T "Set colorspace to show default:\n"}
- addUserKnob {26 _1 l "" +STARTLINE T "*<i>If default does not exist set colorspace to <b>linear</b>.</i>\n\n\n"}
- addUserKnob {26 "" +STARTLINE}
- addUserKnob {41 colorspace T mov_writer.colorspace}
- addUserKnob {26 ""}
  addUserKnob {26 _3 l "" +STARTLINE T "Set format to show default:\n"}
- addUserKnob {41 format l "output format" T Reformat1.format}
+ addUserKnob {41 box_pixel_aspect l "Pixel Aspect Ratio" T DeSqueeze.box_pixel_aspect}
  addUserKnob {26 ""}
  addUserKnob {26 _4 l "" +STARTLINE T "Click to create a Version and upload it to Shotgun. \nRejoice, the process is finished!\n"}
  addUserKnob {22 UploadButton l Upload T "# have to gracefully support the case when \n# Sgtk is not in the system at all or when \n# running an incompatible version of Sgtk.\nimport nuke\ntry:\n  app = nuke.tk_nuke_quickreview\n  fn = app.create_review\nexcept Exception, e:\n  nuke.warning(\"Could not render Shotgun Quickreview! Most likely Toolkit is not currently active. Message: %s\" % e)\nelse:\n  fn(nuke.thisNode())\n\n" +STARTLINE}
@@ -26,8 +21,13 @@ Group {
   ypos -232
  }
  Reformat {
-  format "1920 802 0 0 1920 802 1 Switchblade 1080"
-  name Reformat1
+  type "to box"
+  box_width {bbox.w}
+  box_height {bbox.h}
+  box_pixel_aspect "2"
+  resize distort
+  filter Lanczos6
+  name DeSqueeze
   selected true
   xpos -411
   ypos -175
@@ -112,6 +112,7 @@ Group {
  }
  Write {
   name mov_writer
+  colorspace linear
   xpos -411
   ypos 203
   disable true
