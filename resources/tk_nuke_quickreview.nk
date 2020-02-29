@@ -1,6 +1,5 @@
 set cut_paste_input [stack 0]
-version 9.0 v6
-push $cut_paste_input
+version 12.0 v3
 Group {
  name ShotgunQuickReview
  note_font Verdana
@@ -8,18 +7,74 @@ Group {
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T ""}
- addUserKnob {26 _3 l "" +STARTLINE T "Set format to show default:\n"}
+ addUserKnob {4 LUT_Options l "Set LUT to use with Export" M {"FireFly 1" "FireFly 2" "Forest Wide" "Forest Close" "River Wide"}}
+ addUserKnob {26 ""}
+ addUserKnob {26 CreateText l "" +STARTLINE T ""}
  addUserKnob {41 box_pixel_aspect l "Pixel Aspect Ratio" T DeSqueeze.box_pixel_aspect}
  addUserKnob {26 ""}
  addUserKnob {26 _4 l "" +STARTLINE T "Click to create a Version and upload it to Shotgun. \nRejoice, the process is finished!\n"}
  addUserKnob {22 UploadButton l Upload T "# have to gracefully support the case when \n# Sgtk is not in the system at all or when \n# running an incompatible version of Sgtk.\nimport nuke\ntry:\n  app = nuke.tk_nuke_quickreview\n  fn = app.create_review\nexcept Exception, e:\n  nuke.warning(\"Could not render Shotgun Quickreview! Most likely Toolkit is not currently active. Message: %s\" % e)\nelse:\n  fn(nuke.thisNode())\n\n" +STARTLINE}
 }
- Input {
+Input {
   inputs 0
   name Input1
-  xpos -411
-  ypos -232
- }
+  selected true
+  xpos 9310
+  ypos -646
+}
+ set N18b4e400 [stack 0]
+ OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/firefly_2.cube
+  working_space scene_linear
+  name FireFly_2
+  selected true
+  xpos 9547
+  ypos -596
+}
+ push $N18b4e400
+ OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/river_wide.cube
+  working_space scene_linear
+  name RiverWide
+  selected true
+  xpos 9047
+  ypos -570
+}
+ push $N18b4e400
+ OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/forest_close.cube
+  working_space scene_linear
+  name ForestClose
+  selected true
+  xpos 9432
+  ypos -587
+}
+ push $N18b4e400
+ OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/forest_wide.cube
+  working_space scene_linear
+  name ForestWide
+  selected true
+  xpos 9310
+  ypos -576
+}
+ push $N18b4e400
+ OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/firefly_1.cube
+  working_space scene_linear
+  name FireFly_1
+  selected true
+  xpos 9188
+  ypos -572
+}
+ Switch {
+  inputs 5
+  which {{parent.LUT_Options}}
+  name LUTPicker
+  selected true
+  xpos 9310
+  ypos -519
+}
  Reformat {
   type "to box"
   box_width {bbox.w}
@@ -107,19 +162,19 @@ Group {
   resize fit
   black_outside true
   name mov_reformat
-  xpos -411
-  ypos 158
+  xpos -412
+  ypos 404
  }
  Write {
-  name mov_writer
   colorspace linear
-  xpos -411
-  ypos 203
+  name mov_writer
+  xpos -412
+  ypos 445
   disable true
  }
  Output {
   name Output1
-  xpos -411
-  ypos 303
- }
+  xpos -412
+  ypos 509
+}
 end_group
