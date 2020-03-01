@@ -76,61 +76,56 @@ Switch {
   selected true
   xpos -411
   ypos -487
-}
+ }
  Reformat {
   type "to box"
-  box_width {bbox.w}
-  box_height {bbox.h}
-  box_pixel_aspect "2"
-  resize distort
-  filter Lanczos6
-  name DeSqueeze
+  box_width 1920
+  box_height 1080
+  resize fit
+  black_outside true
+  name mov_reformat1
   xpos -411
-  ypos -175
+  ypos -120
  }
-Text {
+ Text {
   message ""
   size 35
   yjustify top
   Transform 1
-  box {{40 40} {"\[value bbox.h]-40" 1516} 1000 1310}
+  box {{40 40} {"\[value bbox.h]-40" 1516} 1000 500}
   name top_left_text
-  selected true
   xpos -411
   ypos -46
-}
+  }
  Text {
   message "\[format %04d \[frame]]"
   size 35
   xjustify right
   yjustify bottom
   Transform 1
-  box {{"\[value bbox.w]-40" 2008} {40 40} 1208 500}
+  box {{"\[value bbox.w]-40" 2008} {40 40} 1208 250}
   name framecounter
-  selected true
   xpos -411
   ypos -20
-}
+ }
  Text {
   message ""
   size 35
   xjustify right
   yjustify top
   Transform 1
-  box {{"\[value bbox.w]-40" 2008} {"\[value bbox.h]-40" 1516} 1050 1280}
+  box {{"\[value bbox.w]-40" 2008} {"\[value bbox.h]-40" 1516} 1050 500}
   name top_right_text
-  selected true
   xpos -411
   ypos 6
-}
+ }
  Text {
   message ""
   size 35
   yjustify bottom
   Transform 1
-  box {40 40 1000 500}
+  box {40 40 1000 250}
   name bottom_left_text
-  selected true
   xpos -411
   ypos 32
 }
@@ -159,7 +154,7 @@ Text {
   xpos -411
   ypos 91
  }
- Reformat {
+Reformat {
   type "to box"
   box_width 1920
   box_height 1080
@@ -168,7 +163,7 @@ Text {
   black_outside true
   name mov_reformat
   xpos -412
-  ypos -131
+  ypos 154
  }
  Write {
   colorspace linear
