@@ -29,7 +29,7 @@ Group {
   xpos -137
   ypos -542
 }
-  set N417b3800 [stack 0]
+  push $N417b3800
   OCIOFileTransform {
   file N:/2_post/1_vfx/luts/firefly_1.cube
   working_space scene_linear
@@ -70,12 +70,23 @@ Group {
   ypos -538
 }
 Switch {
-  inputs 5
+  inputs 6
   which {{parent.LUT_Options}}
   name LUTPicker
   selected true
   xpos -411
   ypos -487
+ }
+ Reformat {
+  type "to box"
+  box_width {bbox.w}
+  box_height {bbox.h}
+  box_pixel_aspect "2"
+  resize distort
+  filter Lanczos6
+  name DeSqueeze
+  xpos -411
+  ypos -175
  }
  Reformat {
   type "to box"
