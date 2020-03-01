@@ -362,7 +362,7 @@ class Dialog(QtGui.QWidget):
 
         # get frame ranges from ui
         try:
-            start_frame = (int(self.ui.start_frame.text())-1)
+            start_frame = (int(self.ui.start_frame.text()))
             end_frame = int(self.ui.end_frame.text())
         except Exception, e:
             raise ValueError("Could not determine frame range values from UI.")
