@@ -88,48 +88,52 @@ Switch {
   xpos -411
   ypos -175
  }
- Text {
+Text {
   message ""
-  size 48
+  size 35
   yjustify top
   Transform 1
   box {{40 40} {"\[value bbox.h]-40" 1516} 1000 1310}
   name top_left_text
+  selected true
   xpos -411
-  ypos -44
- }
+  ypos -46
+}
  Text {
   message "\[format %04d \[frame]]"
-  size 48
+  size 35
   xjustify right
   yjustify bottom
   Transform 1
-  box {{"\[value bbox.w]-40" 2008} {40 40} 1208 240}
+  box {{"\[value bbox.w]-40" 2008} {40 40} 1208 500}
   name framecounter
+  selected true
   xpos -411
   ypos -20
- }
+}
  Text {
   message ""
-  size 48
+  size 35
   xjustify right
   yjustify top
   Transform 1
   box {{"\[value bbox.w]-40" 2008} {"\[value bbox.h]-40" 1516} 1050 1280}
   name top_right_text
+  selected true
   xpos -411
   ypos 6
- }
+}
  Text {
   message ""
-  size 48
+  size 35
   yjustify bottom
   Transform 1
-  box {40 40 1000 240}
+  box {40 40 1000 500}
   name bottom_left_text
+  selected true
   xpos -411
   ypos 32
- }
+}
  Constant {
   inputs 0
   name slate_base
@@ -164,7 +168,7 @@ Switch {
   black_outside true
   name mov_reformat
   xpos -412
-  ypos 404
+  ypos -131
  }
  Write {
   colorspace linear
