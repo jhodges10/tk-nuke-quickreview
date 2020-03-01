@@ -7,7 +7,7 @@ Group {
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T ""}
- addUserKnob {4 LUT_Options l "Set LUT to use with Export" M {"RiverWide" "ForestClose" "ForestWide" "FireFly_2" "FireFly_1" ""}}
+ addUserKnob {4 LUT_Options l "Set LUT to use with Export" M {"RiverWide" "ForestClose" "ForestWide" "FireFly_2" "FireFly_1" "Contrasty" ""}}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T ""}
  addUserKnob {41 box_pixel_aspect l "Pixel Aspect Ratio" T DeSqueeze.box_pixel_aspect}
@@ -20,6 +20,14 @@ Group {
   name Input1
   xpos -411
   ypos -614
+}
+  set N417b3800 [stack 0]
+  OCIOFileTransform {
+  file N:/2_post/1_vfx/luts/contrasty.cube
+  working_space scene_linear
+  name Contrasty
+  xpos -137
+  ypos -542
 }
   set N417b3800 [stack 0]
   OCIOFileTransform {
