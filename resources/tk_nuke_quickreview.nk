@@ -7,9 +7,6 @@ Group {
  addUserKnob {20 tanktab l "Shotgun Review"}
  addUserKnob {26 ""}
  addUserKnob {26 CreateText l "" +STARTLINE T ""}
- addUserKnob {4 LUT_Options l "Set LUT to use with Export" M {"RiverWide" "ForestClose" "ForestWide" "FireFly_2" "FireFly_1" "Contrasty" ""}}
- addUserKnob {26 ""}
- addUserKnob {26 CreateText l "" +STARTLINE T ""}
  addUserKnob {41 box_pixel_aspect l "Pixel Aspect Ratio" T DeSqueeze.box_pixel_aspect}
  addUserKnob {26 ""}
  addUserKnob {26 _4 l "" +STARTLINE T "Click to create a Version and upload it to Shotgun. \nRejoice, the process is finished!\n"}
@@ -21,61 +18,12 @@ Group {
   xpos -411
   ypos -614
 }
-  set N417b3800 [stack 0]
   OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/contrasty.cube
+  file {[getenv SHOT_LUT]}
   working_space scene_linear
   name Contrasty
   xpos -137
   ypos -542
-}
-  push $N417b3800
-  OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/firefly_1.cube
-  working_space scene_linear
-  name FireFly_1
-  xpos -137
-  ypos -542
-}
-  push $N417b3800
-  OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/firefly_2.cube
-  working_space scene_linear
-  name FireFly_2
-  xpos -269
-  ypos -543
-}
-  push $N417b3800
-  OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/forest_wide.cube
-  working_space scene_linear
-  name ForestWide
-  xpos -411
-  ypos -544
-}
-  push $N417b3800
-  OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/forest_close.cube
-  working_space scene_linear
-  name ForestClose
-  xpos -539
-  ypos -546
-}
-  push $N417b3800
-  OCIOFileTransform {
-  file N:/2_post/1_vfx/luts/river_wide.cube
-  working_space scene_linear
-  name RiverWide
-  xpos -674
-  ypos -538
-}
-Switch {
-  inputs 6
-  which {{parent.LUT_Options}}
-  name LUTPicker
-  selected true
-  xpos -411
-  ypos -487
  }
  Reformat {
   type "to box"
